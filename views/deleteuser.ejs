@@ -1,0 +1,56 @@
+<% if (messages.error) { %>
+    <script>
+        alert("<%= messages.error[0] %>");
+    </script>
+<% } %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #ffe6e6;
+            text-align: center;
+        }
+        form {
+            display: inline-block;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input {
+            display: block;
+            margin: 1rem auto;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Delete user by verifying credentials</h2>
+    <form method="post" action="/user/<%=id%>?_method=DELETE">
+        <input name="email" required placeholder="Enter email" type="email">
+        <input name="password" required placeholder="Enter password" type="password">
+        <button>Delete</button>
+    </form>
+</body>
+</html>

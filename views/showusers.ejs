@@ -1,0 +1,74 @@
+<% if (success) { %>
+  <script>
+    window.onload = function() {
+      alert("✅ New user added successfully!");
+    }
+  </script>
+<% } %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f4f4f4;
+        }
+        h3 {
+            text-align: center;
+        }
+        .user-card {
+            background-color: white;
+            padding: 1rem;
+            margin: 1rem auto;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        form {
+            display: inline-block;
+            margin: 0.5rem;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 14px;
+            background-color: #ffc107;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0a800;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h3>Data for all users</h3>
+    <% let count = 0; %>
+    <% for(result of results) { count++; %>
+    <div class="user-card">
+        <p><strong>User <%= count %> :</strong></p>
+        <p>Id: <%= result.id %><br>
+           Username: <%= result.username %><br>
+           Email: <%= result.email %></p>
+        <form method="get" action="/user/<%= result.id %>/edit">
+            <button>Edit Username</button>
+        </form>
+        <form method="get" action="/user/<%= result.id %>?_method=DELETE">
+            <button class="delete-btn">Delete User</button>
+        </form>
+    </div>
+    <% } %>
+</body>
+</html>

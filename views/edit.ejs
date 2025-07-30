@@ -1,0 +1,55 @@
+<% if (messages.error) { %>
+    <script>
+        alert("<%= messages.error[0] %>");
+    </script>
+<% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Username</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            text-align: center;
+            background-color: #f0f2f5;
+        }
+        form {
+            display: inline-block;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        textarea, input {
+            display: block;
+            width: 100%;
+            margin: 1rem 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #138496;
+        }
+    </style>
+</head>
+<body>
+    <h2>Editing username for <%= user.email %></h2>
+    <form method="post" action="/user/<%= user.id %>?_method=PATCH">
+        <textarea name="username"><%= user.username %></textarea>
+        <input name="password" required placeholder="Enter password" type="password">
+        <button>Submit</button>
+    </form>
+</body>
+</html>
